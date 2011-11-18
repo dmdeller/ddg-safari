@@ -1,0 +1,14 @@
+Requirements:
+
+- Platypus: http://sveinbjorn.org/platypus
+- CocoaDialog: http://mstratman.github.com/cocoadialog/
+
+How to build:
+
+1. Open Platypus
+2. Drag ddg.rb to Script Path text box
+3. Change Script Type to Ruby
+4. Change Output to None
+5. Uncheck 'Remains running after completion' and all other checkboxes
+6. Drag CocoaDialog into 'Files and folders to be bundled' list
+7. Click Create
