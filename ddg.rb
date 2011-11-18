@@ -4,7 +4,7 @@ class DDGSafariSetup
 
   COCOA_DIALOG = './CocoaDialog.app/Contents/MacOS/CocoaDialog'
   
-  HOSTS_DDG_IP = '127.0.0.1'
+  HOSTS_DDG_IP = '72.94.249.35'
   HOSTS_HOSTNAME = 'search.yahoo.com'
   HOSTS_TAG = 'Automatically added by DuckDuckGo Safari Setup app'
   
