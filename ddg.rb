@@ -38,7 +38,7 @@ class DDGSafariSetup
     header = 'DuckDuckGo Safari Setup: READ CAREFULLY'
     info = "This app will replace the Yahoo search in your Safari browser with DuckDuckGo. Your administrator password will be required.
     
-You will no longer be able to access Yahoo search from any browser on this computer; you can still access other Yahoo sites. If you change your mind, simply run this app again to uninstall.
+If you change your mind, simply open this app again to uninstall.
 
 For wizards only: This is just going to add an entry to your
 /etc/hosts file. You can do it yourself if you'd prefer:
