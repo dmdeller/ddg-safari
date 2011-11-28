@@ -67,9 +67,10 @@ For wizards only: This is just going to add an entry to your
     
     begin
       
-      file = File.new(HOSTS_FILE, 'a+')
-      file << "\n"
-      file << "#{HOSTS_LINE}\n"
+      # clean up previous installations
+      doUninstall()
+      
+      doInstall()
       
       info = 'Installation successful.'
       detail = 'Please quit and reopen Safari for changes to take effect.'
@@ -86,38 +87,23 @@ For wizards only: This is just going to add an entry to your
   end
   
   
+  def doInstall
+  
+    file = File.new(HOSTS_FILE, 'a+')
+    file << "\n"
+    file << "#{HOSTS_LINE}\n"
+    file.close
+  
+  end
+  
+  
   def uninstall
   
     begin
       
-      new_lines = []
-      matches = 0
-      
-      file = File.new(HOSTS_FILE, 'r')
-      
-      file.each do |line|
-      
-        if (line.match(/#{HOSTS_TAG}/)) then
-        
-          matches += 1
-          
-        else
-        
-          new_lines.push(line)
-        
-        end
-      
-      end
+      matches = doUninstall()
       
       if (matches > 0) then
-        
-        file = File.new(HOSTS_FILE, 'w')
-        
-        new_lines.each do |line|
-        
-          file << line
-        
-        end
         
         info = 'Uninstallation successful.'
         detail = 'Please quit and reopen Safari for changes to take effect.'
@@ -137,6 +123,46 @@ For wizards only: This is just going to add an entry to your
       `#{COCOA_DIALOG} msgbox --button1 OK --text "#{info}" --informative-text "#{detail}"`
     
     end
+  
+  end
+  
+  
+  def doUninstall
+  
+    new_lines = []
+    matches = 0
+    
+    file = File.new(HOSTS_FILE, 'r')
+    
+    file.each do |line|
+    
+      if (line.match(/#{HOSTS_TAG}/)) then
+      
+        matches += 1
+        
+      else
+      
+        new_lines.push(line)
+      
+      end
+    
+    end
+    
+    if (matches > 0) then
+    
+      file = File.new(HOSTS_FILE, 'w')
+      
+      new_lines.each do |line|
+      
+        file << line
+      
+      end
+      
+      file.close
+    
+    end
+    
+    return matches
   
   end
   
